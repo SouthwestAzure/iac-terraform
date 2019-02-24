@@ -1,14 +1,8 @@
-variable "resource_group_name" { 
-  # default = "mhug-devops-20180918"
-}
+variable "resource_group_name" { }
 
-variable "container_registry_name" { 
-  # default = "mhugacr20180918"
-}
+variable "container_registry_name" { }
 
-variable "aks_service_name" { 
-  # default = "mhug-aks-20180918"
-}
+variable "aks_service_name" { }
 
 variable "location" {
   default = "westus2"
@@ -18,9 +12,7 @@ variable "service_principal_name" { }
 
 variable "service_principal_pwd" { }
 
-variable "random" {
-  # default = "20190222"  
-}
+variable "random" { }
 
 resource "azurerm_resource_group" "group" {
   name     = "${var.resource_group_name}-${var.random}"
