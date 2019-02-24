@@ -6,7 +6,7 @@ variable "storage_account_name" { }
 
 variable "keyvault_name" { }
 
-variable "keyvault-object-id" { }
+variable "keyvault_object_id" { }
 
 variable "location" {
   default = "westus2"
@@ -38,7 +38,7 @@ resource "azurerm_key_vault" "keyvault" {
 
   access_policy {
     tenant_id = "${data.azurerm_client_config.current.tenant_id}"
-    object_id = "${var.keyvault-object-id}"
+    object_id = "${var.keyvault_object_id}"
 
     key_permissions = [
       "create",
