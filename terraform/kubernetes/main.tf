@@ -50,7 +50,6 @@ resource "azurerm_kubernetes_cluster" "aks" {
   addon_profile {
     http_application_routing {
       enabled = true
-      http_application_routing_zone_name = "mytestingroutingxyz"
     }
   }
 }
