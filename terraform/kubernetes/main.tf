@@ -56,4 +56,8 @@ resource "azurerm_kubernetes_cluster" "aks" {
       enabled = true
     }
   }
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
