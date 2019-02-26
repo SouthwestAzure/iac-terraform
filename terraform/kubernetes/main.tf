@@ -10,6 +10,10 @@ variable "service_principal_name" { }
 
 variable "service_principal_pwd" { }
 
+variable "node_count" {
+  default = "3"
+}
+
 terraform {
   backend "azurerm" {
     environment = "public"
@@ -37,7 +41,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
 
   agent_pool_profile {
     name    = "agentpool"
-    count   = "3"
+    count   = "${var.node_count}"
     vm_size = "Standard_DS2_v2"
     os_type = "Linux"
   }
