@@ -4,6 +4,8 @@ variable "container_registry_name" { }
 
 variable "aks_service_name" { }
 
+variable "suffix" { }
+
 variable "location" { }
 
 variable "service_principal_name" { }
@@ -14,6 +16,10 @@ variable "node_count" {
   default = "3"
 }
 
+variable "prevent_destroy" {
+  default = "true"
+}
+
 terraform {
   backend "azurerm" {
     environment = "public"
@@ -21,23 +27,23 @@ terraform {
 }
 
 resource "azurerm_resource_group" "group" {
-  name     = "${var.resource_group_name}"
+  name     = "${var.resource_group_name}-${var.suffix}"
   location = "${var.location}"
 }
 
 resource "azurerm_container_registry" "acr" {
-  name                = "${var.container_registry_name}"
-  resource_group_name = "${azurerm_resource_group.group.name}"
+  name                = "${var.container_registry_name}${var.suffix}"
+  resource_group_name = "${azurerm_resource_group.group.name}-${var.suffix}"
   location            = "${azurerm_resource_group.group.location}"
   admin_enabled       = true
   sku                 = "Basic"
 }
 
 resource "azurerm_kubernetes_cluster" "aks" {
-  name                = "${var.aks_service_name}"
-  resource_group_name = "${azurerm_resource_group.group.name}"
+  name                = "${var.aks_service_name}-${var.suffix}"
+  resource_group_name = "${azurerm_resource_group.group.name}-${var.suffix}"
   location            = "${azurerm_resource_group.group.location}"
-  dns_prefix          = "${var.aks_service_name}"
+  dns_prefix          = "${var.aks_service_name}-${var.suffix}"
 
   agent_pool_profile {
     name    = "agentpool"
@@ -58,6 +64,6 @@ resource "azurerm_kubernetes_cluster" "aks" {
   }
 
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = "${var.prevent_destroy}"
   }
 }
