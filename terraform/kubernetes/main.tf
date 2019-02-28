@@ -29,7 +29,7 @@ resource "azurerm_resource_group" "group" {
 
 resource "azurerm_container_registry" "acr" {
   name                = "${var.container_registry_name}${var.suffix}"
-  resource_group_name = "${azurerm_resource_group.group.name}-${var.suffix}"
+  resource_group_name = "${azurerm_resource_group.group.name}"
   location            = "${azurerm_resource_group.group.location}"
   admin_enabled       = true
   sku                 = "Basic"
@@ -37,7 +37,7 @@ resource "azurerm_container_registry" "acr" {
 
 resource "azurerm_kubernetes_cluster" "aks" {
   name                = "${var.aks_service_name}-${var.suffix}"
-  resource_group_name = "${azurerm_resource_group.group.name}-${var.suffix}"
+  resource_group_name = "${azurerm_resource_group.group.name}"
   location            = "${azurerm_resource_group.group.location}"
   dns_prefix          = "${var.aks_service_name}-${var.suffix}"
 
