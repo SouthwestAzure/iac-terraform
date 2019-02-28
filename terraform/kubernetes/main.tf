@@ -17,7 +17,7 @@ variable "node_count" {
 }
 
 variable "prevent_destroy" {
-  default = true
+  default = "1"
 }
 
 terraform {
@@ -64,6 +64,6 @@ resource "azurerm_kubernetes_cluster" "aks" {
   }
 
   lifecycle {
-    prevent_destroy = ${var.prevent_destroy}
+    prevent_destroy = "${var.prevent_destroy}"
   }
 }
