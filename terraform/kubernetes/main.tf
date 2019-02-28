@@ -16,10 +16,6 @@ variable "node_count" {
   default = "3"
 }
 
-variable "prevent_destroy" {
-  default = "1"
-}
-
 terraform {
   backend "azurerm" {
     environment = "public"
@@ -64,6 +60,6 @@ resource "azurerm_kubernetes_cluster" "aks" {
   }
 
   lifecycle {
-    prevent_destroy = "${var.prevent_destroy}"
+    prevent_destroy = false
   }
 }
