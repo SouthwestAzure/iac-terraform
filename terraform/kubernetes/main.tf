@@ -1,3 +1,7 @@
+provider "azurerm" {
+  version = "=1.22.1"
+}
+
 variable "resource_group_name" { }
 
 variable "container_registry_name" { }
@@ -7,10 +11,6 @@ variable "aks_service_name" { }
 variable "suffix" { }
 
 variable "location" { }
-
-variable "prevent_destroy" { 
-  default = false
-}
 
 variable "service_principal_name" { }
 
@@ -64,6 +64,6 @@ resource "azurerm_kubernetes_cluster" "aks" {
   }
 
   lifecycle {
-    prevent_destroy = ${var.prevent_destroy}
+    prevent_destroy = true
   }
 }
