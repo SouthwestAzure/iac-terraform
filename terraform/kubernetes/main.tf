@@ -17,7 +17,7 @@ variable "node_count" {
 }
 
 variable "prevent_destroy" {
-  default = "true"
+  default = true
 }
 
 terraform {
