@@ -64,6 +64,6 @@ resource "azurerm_kubernetes_cluster" "aks" {
   }
 
   lifecycle {
-    prevent_destroy = "${var.prevent_destroy}"
+    prevent_destroy = ${var.prevent_destroy}
   }
 }
