@@ -8,6 +8,10 @@ variable "suffix" { }
 
 variable "location" { }
 
+variable "prevent_destroy" { 
+  default = false
+}
+
 variable "service_principal_name" { }
 
 variable "service_principal_pwd" { }
@@ -60,6 +64,6 @@ resource "azurerm_kubernetes_cluster" "aks" {
   }
 
   lifecycle {
-    prevent_destroy = false
+    prevent_destroy = ${var.prevent_destroy}
   }
 }
