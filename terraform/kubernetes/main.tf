@@ -44,6 +44,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   resource_group_name = "${azurerm_resource_group.group.name}"
   location            = "${azurerm_resource_group.group.location}"
   dns_prefix          = "${var.aks_service_name}-${var.suffix}"
+  kubernetes_version  = "1.10.13"
 
   agent_pool_profile {
     name    = "agentpool"
