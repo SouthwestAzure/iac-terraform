@@ -17,32 +17,3 @@ Based on [this guidance](https://docs.microsoft.com/en-us/azure/container-servic
 You'll want to make a copy of the results, specifically the appId and password, as shown below.
 
 ![Credential screenshot](/assets/service-principal-creds.png)
-
-### Azure Resource Setup Using Terraform
-
-We will use Terraform to create a Resource Group, Azure Container Registry and an AKS Cluster.
-[Click here](https://www.terraform.io/docs/providers/azurerm/index.html) to read more about Terraform
-and the Azure Resource Providers that it provides.
-
-```
-cd Terraform/pets  
-terraform init  
-terraform apply  
-```
-
-You can expect this process to take between 10 to 15 minutes, mostly because AKS takes a while to provision in Azure.
-
-## The Project
-
-The code and project itself is just an out-of-the-box .NET Core 2.x Web API project that was created using the <i>Project... New...</i>
-functionality in Visual Studio. The code itself is fairly irrelevant to the discussion.
-
-## Key Files
-
-[Terraform Pets](/Terraform/pets)  
-[Terraform Cattle](/Terraform/cattle)  
-
-## Microservices Reading
-[Overview](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-overview-microservices)  
-[Building Microservices Book](http://shop.oreilly.com/product/0636920033158.do)  
-[Sam Newman Video](https://www.youtube.com/watch?v=PFQnNFe27kU)  
